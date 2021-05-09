@@ -27,4 +27,8 @@ public class MovieService {
         return new Movie(ID, movie.getMovieName(), movie.getMovieDirector(), movie.getMovieCategory(), movie.getMovieYear());
     }
 
+    public Long deleteMovieByID(Long ID) {
+        return ID;
+    }
+
 }
