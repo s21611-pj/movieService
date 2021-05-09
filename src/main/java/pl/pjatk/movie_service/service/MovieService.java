@@ -22,4 +22,8 @@ public class MovieService {
     public Movie createMovie (Movie movie) {
         return movie;
     }
+
+    public Movie updateMovie (Movie movie) {
+        return movie;
+    }
 }
