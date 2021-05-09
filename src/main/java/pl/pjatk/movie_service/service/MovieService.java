@@ -18,4 +18,8 @@ public class MovieService {
     public Movie findMovieByID(Long ID) {
         return new Movie(2L, "nic", "rezyser", MovieCategory.COMEDY, 1990);
     }
+
+    public Movie createMovie (Movie movie) {
+        return movie;
+    }
 }

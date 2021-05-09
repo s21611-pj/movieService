@@ -55,4 +55,15 @@ public class Movie {
         this.movieCategory = movieCategory;
         this.movieYear = movieYear;
     }
+
+    public Movie(String movieName, String movieDirector, MovieCategory movieCategory, int movieYear) {
+        this.movieName = movieName;
+        this.movieDirector = movieDirector;
+        this.movieCategory = movieCategory;
+        this.movieYear = movieYear;
+    }
+
+    public Movie() {
+
+    }
 }

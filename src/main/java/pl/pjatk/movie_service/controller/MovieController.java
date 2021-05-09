@@ -1,10 +1,7 @@
 package pl.pjatk.movie_service.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.pjatk.movie_service.model.Movie;
 import pl.pjatk.movie_service.service.MovieService;
 
@@ -28,5 +25,10 @@ public class MovieController {
     @GetMapping("/{id}")
     public ResponseEntity<Movie> findMovieByID(@PathVariable Long ID) {
         return ResponseEntity.ok(movieService.findMovieByID(ID));
+    }
+
+    @PostMapping
+    public ResponseEntity<Movie> createMovie (@RequestBody Movie movie) {
+        return ResponseEntity.ok(movieService.createMovie(movie));
     }
 }
