@@ -23,7 +23,8 @@ public class MovieService {
         return movie;
     }
 
-    public Movie updateMovie (Movie movie) {
-        return movie;
+    public Movie updateMovie (Movie movie, Long ID) {
+        return new Movie(ID, movie.getMovieName(), movie.getMovieDirector(), movie.getMovieCategory(), movie.getMovieYear());
     }
+
 }
