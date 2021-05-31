@@ -1,12 +1,19 @@
 package pl.pjatk.movie_service.model;
 
-public class Movie {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "movie")
+public class Movie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    private String movieName;
-    private String movieDirector;
-    private MovieCategory movieCategory;
-    private int movieYear;
+    private String name;
+    private String director;
+    @Enumerated(EnumType.STRING)
+    private MovieCategory category;
+    private int year;
+    private boolean available = false;
 
     public Long getID() {
         return ID;
@@ -16,51 +23,59 @@ public class Movie {
         this.ID = ID;
     }
 
-    public String getMovieName() {
-        return movieName;
+    public String getName() {
+        return name;
     }
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
+    public void setName(String movieName) {
+        this.name = movieName;
     }
 
-    public String getMovieDirector() {
-        return movieDirector;
+    public String getDirector() {
+        return director;
     }
 
-    public void setMovieDirector(String movieDirector) {
-        this.movieDirector = movieDirector;
+    public void setDirector(String movieDirector) {
+        this.director = movieDirector;
     }
 
-    public MovieCategory getMovieCategory() {
-        return movieCategory;
+    public MovieCategory getCategory() {
+        return category;
     }
 
-    public void setMovieCategory(MovieCategory movieCategory) {
-        this.movieCategory = movieCategory;
+    public void setCategory(MovieCategory movieCategory) {
+        this.category = movieCategory;
     }
 
-    public int getMovieYear() {
-        return movieYear;
+    public int getYear() {
+        return year;
     }
 
-    public void setMovieYear(int movieYear) {
-        this.movieYear = movieYear;
+    public void setYear(int movieYear) {
+        this.year = movieYear;
     }
 
-    public Movie(Long ID, String movieName, String movieDirector, MovieCategory movieCategory, int movieYear) {
-        this.ID = ID;
-        this.movieName = movieName;
-        this.movieDirector = movieDirector;
-        this.movieCategory = movieCategory;
-        this.movieYear = movieYear;
+    public boolean getAvailable() {
+        return available;
     }
 
-    public Movie(String movieName, String movieDirector, MovieCategory movieCategory, int movieYear) {
-        this.movieName = movieName;
-        this.movieDirector = movieDirector;
-        this.movieCategory = movieCategory;
-        this.movieYear = movieYear;
+    public void setAvailable(boolean available) {
+        available = available;
+    }
+
+    public Movie(String movieName, String director, MovieCategory category, int year, boolean available) {
+        this.name = movieName;
+        this.director = director;
+        this.category = category;
+        this.year = year;
+        this.available = available;
+    }
+
+    public Movie(String movieName, String director, MovieCategory category, int year) {
+        this.name = movieName;
+        this.director = director;
+        this.category = category;
+        this.year = year;
     }
 
     public Movie() {
