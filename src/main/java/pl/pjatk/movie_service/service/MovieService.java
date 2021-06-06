@@ -39,8 +39,7 @@ public class MovieService {
             Movie putMovie = movie;
             putMovie.setID(id);
             return movieRepository.save(putMovie);
-        }
-        else {
+        } else {
             throw new RuntimeException();
         }
     }
@@ -51,6 +50,10 @@ public class MovieService {
 
     public void updateMovieAvailability(Long id) {
         movieRepository.updateAvailabilityToTrue(id);
+    }
+
+    public void updateMovieAvailabilityToFalse(Long id) {
+        movieRepository.updateAvailabilityToFalse(id);
     }
 }
 

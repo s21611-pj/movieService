@@ -49,6 +49,12 @@ public class MovieController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/availability/false/{id}")
+    public ResponseEntity<Void> updateMovieAvailabilityToFalse(@PathVariable Long id) {
+        movieService.updateMovieAvailabilityToFalse(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
 
 //@RestController
