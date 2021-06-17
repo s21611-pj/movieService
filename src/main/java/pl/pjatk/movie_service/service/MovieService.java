@@ -1,8 +1,9 @@
 package pl.pjatk.movie_service.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import pl.pjatk.movie_service.model.Movie;
-import pl.pjatk.movie_service.model.MovieCategory;
 import pl.pjatk.movie_service.repository.MovieRepository;
 import java.util.List;
 import java.util.Optional;
@@ -19,13 +20,13 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Movie findById(Long id) throws RuntimeException{
+    public Movie findById(Long id) throws HttpClientErrorException {
         Optional<Movie> movieSearch = movieRepository.findById(id);
-        if (movieSearch.isPresent()){
+        if (movieSearch.isEmpty()) {
+            // change "HttpStatus.NOT_FOUND" to "HttpStatus.BAD_REQUEST" for test 400 code
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+        } else {
             return movieSearch.get();
-        }
-        else {
-            throw new RuntimeException();
         }
     }
 
